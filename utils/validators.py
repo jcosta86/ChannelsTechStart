@@ -8,7 +8,7 @@ def validate_type(key: str, value: object, type: Type) -> object:
 
 
 def validate_not_empty(key: str, value: str) -> str:
-    if not isinstance(value, float):
+    if isinstance(value, str):
         if not value.strip():
             raise ValueError(f"{key.capitalize()} cannot be empty!")
     return value
