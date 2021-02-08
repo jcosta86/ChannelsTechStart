@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, Float
 from sqlalchemy.orm import validates
 from models.base_model import BaseModel
 from utils.validators import (
-    validate_len, 
+    validate_len,
     validate_not_empty,
     validate_type
 )
@@ -10,17 +10,17 @@ from utils.validators import (
 
 class Channels(BaseModel):
     __tablename__ = 'channels'
-    name = Column('name', String(length=100), nullable = False)
-    description = Column('description', String(length=255), nullable = True)
-    contact = Column('contact', String(length=100), nullable = False)
-    url = Column('url', String(length=100), nullable = False)
-    rate = Column('rate', Float, nullable = False)
+    name = Column('name', String(length=100), nullable=False)
+    description = Column('description', String(length=255), nullable=True)
+    contact = Column('contact', String(length=100), nullable=False)
+    url = Column('url', String(length=100), nullable=False)
+    rate = Column('rate', Float, nullable=False)
 
-    def __init__(self, name: str, description: str, contact: str, url: str, rate:float) -> None:
+    def __init__(self, name: str, description: str, contact: str, url: str, rate: float) -> None:
         self.name = name
         self.description = description
         self.contact = contact
-        self.url = url 
+        self.url = url
         self.rate = rate
 
     @validates('name')
@@ -50,4 +50,3 @@ class Channels(BaseModel):
     def validate_rate(self, key, rate):
         rate = validate_type(key, rate, float)
         return validate_not_empty(key, rate)
-
