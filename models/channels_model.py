@@ -14,7 +14,7 @@ class Channels(BaseModel):
     description = Column('description', String(length=255), nullable = True)
     contact = Column('contact', String(length=100), nullable = False)
     url = Column('url', String(length=100), nullable = False)
-    rate = Column('rate', Float(length=20), nullable = False)
+    rate = Column('rate', Float, nullable = False)
 
     def __init__(self, name: str, description: str, contact: str, url: str, rate:float) -> None:
         self.name = name
@@ -49,5 +49,5 @@ class Channels(BaseModel):
     @validates('rate')
     def validate_rate(self, key, rate):
         rate = validate_type(key, rate, float)
-        rate = validate_not_empty(key, rate)
-        return validate_len(key, rate, 100)
+        return validate_not_empty(key, rate)
+
