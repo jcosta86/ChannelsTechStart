@@ -6,10 +6,13 @@ def validate_type(key: str, value: object, type: Type) -> object:
         raise TypeError(f"{key.capitalize()} must be {type}!")
     return value
 
+
 def validate_not_empty(key: str, value: str) -> str:
-    if not value.strip():
-        raise ValueError(f"{key.capitalize()} cannot be empty!")
+    if not isinstance(value, float):
+        if not value.strip():
+            raise ValueError(f"{key.capitalize()} cannot be empty!")
     return value
+
 
 def validate_len(key: str, value: object, max_len: int) -> object:
     if len(value) > max_len:
