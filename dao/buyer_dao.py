@@ -2,7 +2,7 @@ from dao.base_dao import BaseDao
 from models.buyer import Buyer
 
 
-class ChannelsDao(BaseDao):
+class BuyerDao(BaseDao):
     def __init__(self):
         super().__init__(Buyer)
 
