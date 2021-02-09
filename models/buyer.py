@@ -59,5 +59,5 @@ class Buyer(BaseModel):
             
     @validates('id_channel')
     def validate_id_channel(self, key, id_channel):
-        id_channel = validate_type(key, id_channel, str)
+        id_channel = validate_type(key, id_channel, int)
         return validate_not_empty(key, id_channel)
